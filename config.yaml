@@ -1,0 +1,31 @@
+server:
+  host: "0.0.0.0"
+  port: 8000
+  hot_reload: true 
+  log_level: "INFO" 
+
+endpoints:
+  - group: "user"
+    version: "v1"
+    base_path: "/users"
+
+    routes:
+      - path: "/"
+        method: "GET"
+        description: "Fetch all users"
+        handler: "handlers.user.get_users"
+        response:
+          200:
+            model: "pydantic-model"
+          404:
+            model: "model" 
+
+      - path: "/{user_id}"
+        method: "GET"
+        description: "Get details of specific user"
+        handler: "some handler"
+        response:
+          200:
+            model: "model"
+          404:
+            model: "model" 

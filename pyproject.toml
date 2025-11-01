@@ -1,27 +1,35 @@
-[project]
+[tool.poetry]
 name = "zyro"
 version = "0.0.1"
-description = "An automation tool that makes API's and deployment faster."
-authors = [
-	{ name = "M. Sanjay Uddith Raju", email = "uddithmachiraju@gmail.com"}
-]
-requires-python = "^3.10"
+description = "An automation tool that makes APIs and deployment faster."
+authors = ["M. Sanjay Uddith Raju <uddithmachiraju@gmail.com>"]
 
-[poetry.dev-dependencies]
-pydnatic = "^2.12.3"
+[tool.poetry.scripts]
+zyro = "src.zyro.cli.main:main" 
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+pydantic = "^2.12.3"
+pydantic-settings = "^2.11.0"
+typer = "^0.20.0"
+PyYAML = "^6.0.3" 
+
+dotenv = "^0.9.9"
 pytest = "^8.4.2"
 black = "^25.9.0"
-falke8 = "^7.3.0"
+flake8 = "^7.3.0"
 isort = "^7.0.0"
-mypy = "^1.18.2" 
+mypy = "^1.18.2"
 
 [build-system]
-requires = ["poetry-core>="] 
+requires = ["poetry-core>=2.2.1"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.black]
-line-length = 88 
-target-version = ["py310"] 
+line-length = 88
+target-version = ["py310"]
 exclude = '''
 (
   /(
@@ -34,21 +42,21 @@ exclude = '''
   )/
 )
 '''
-preview = true 
+preview = true
 
 [tool.isort]
 profile = "black"
-line_length = 88 
-multi_line_output = 3 
-include_trailing_comma = true 
+line_length = 88
+multi_line_output = 3
+include_trailing_comma = true
 
 [tool.mypy]
 python_version = "3.10"
-warn_return_any = true 
-warn_unused_configs = true 
-ignore_missing_imports = true 
-diallow_untyped_defs = true
-check_untyped_defs = true 
-show_error_codes = true 
-pretty = true 
-exclude = ["venv", "build", "dist"] 
+warn_return_any = true
+warn_unused_configs = true
+ignore_missing_imports = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+show_error_codes = true
+pretty = true
+exclude = ["venv", "build", "dist"]
