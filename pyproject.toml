@@ -1,0 +1,54 @@
+[project]
+name = "zyro"
+version = "0.0.1"
+description = "An automation tool that makes API's and deployment faster."
+authors = [
+	{ name = "M. Sanjay Uddith Raju", email = "uddithmachiraju@gmail.com"}
+]
+requires-python = "^3.10"
+
+[poetry.dev-dependencies]
+pydnatic = "^2.12.3"
+pytest = "^8.4.2"
+black = "^25.9.0"
+falke8 = "^7.3.0"
+isort = "^7.0.0"
+mypy = "^1.18.2" 
+
+[build-system]
+requires = ["poetry-core>="] 
+build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88 
+target-version = ["py310"] 
+exclude = '''
+(
+  /(
+      \.git
+    | \.mypy_cache
+    | \.pytest_cache
+    | \.venv
+    | build
+    | dist
+  )/
+)
+'''
+preview = true 
+
+[tool.isort]
+profile = "black"
+line_length = 88 
+multi_line_output = 3 
+include_trailing_comma = true 
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true 
+warn_unused_configs = true 
+ignore_missing_imports = true 
+diallow_untyped_defs = true
+check_untyped_defs = true 
+show_error_codes = true 
+pretty = true 
+exclude = ["venv", "build", "dist"] 

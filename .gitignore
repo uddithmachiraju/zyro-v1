@@ -1,0 +1,193 @@
+# -------------------------------
+# Python
+# -------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+*.so
+
+# Byte-compiled / optimized / DLL files
+build/
+develop-eggs/
+dist/
+eggs/
+.eggs/
+parts/
+sdist/
+wheels/
+pip-wheel-metadata/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# -------------------------------
+# Virtual Environments
+# -------------------------------
+.venv/
+venv/
+env/
+ENV/
+.conda/
+*.env
+*.venv
+.Python
+
+# -------------------------------
+# Logs and Databases
+# -------------------------------
+*.log
+*.out
+*.err
+*.sqlite3
+*.db
+nohup.out
+
+# -------------------------------
+# Testing & Coverage
+# -------------------------------
+.coverage
+.coverage.*
+.cache/
+.pytest_cache/
+.tox/
+nosetests.xml
+coverage.xml
+htmlcov/
+.junit/
+test-results/
+
+# -------------------------------
+# Build Docs / Sphinx / MkDocs
+# -------------------------------
+docs/_build/
+site/
+build-docs/
+*.bak
+
+# -------------------------------
+# Jupyter / IPython
+# -------------------------------
+.ipynb_checkpoints
+*.ipynb_meta
+
+# -------------------------------
+# IDEs / Editors
+# -------------------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.sublime-workspace
+*.sublime-project
+*.DS_Store
+Thumbs.db
+
+# -------------------------------
+# Docker / Compose
+# -------------------------------
+docker-compose.override.yml
+.docker/
+*.pid
+*.sock
+
+# -------------------------------
+# Kubernetes / Terraform
+# -------------------------------
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+kubeconfig
+*.kubeconfig
+*.tfvars
+terraform.tfvars
+*.tfplan
+*.hcl
+
+# -------------------------------
+# Local development
+# -------------------------------
+local_settings.py
+.envrc
+.env.local
+.env.development
+.env.production
+.env.test
+.env.sample
+
+# -------------------------------
+# Cache / Temp files
+# -------------------------------
+tmp/
+temp/
+*.tmp
+*.bak
+*.old
+*.orig
+*.swp
+*.swo
+
+# -------------------------------
+# Node / Frontend (if any)
+# -------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# -------------------------------
+# Deployment / Cloud / Misc
+# -------------------------------
+*.pem
+*.key
+*.crt
+*.csr
+*.pub
+secrets.yaml
+secrets.json
+deployments/__pycache__/
+deployments/temp/
+deployments/output/
+
+# -------------------------------
+# Machine Learning / Data Artifacts
+# -------------------------------
+*.ckpt
+*.pt
+*.pth
+*.h5
+*.model
+*.onnx
+*.joblib
+*.pkl
+*.csv
+*.parquet
+*.jsonl
+data/
+datasets/
+outputs/
+runs/
+models/
+checkpoints/
+
+# -------------------------------
+# Custom for Zyro project
+# -------------------------------
+scripts/__pycache__/
+scripts/*.log
+scripts/*.tmp
+examples/**/outputs/
+examples/**/.cache/
+tests/fixtures/*.tmp
+
+# -------------------------------
+# Extra
+# -------------------------------
+things.todo
+project-structure.txt
