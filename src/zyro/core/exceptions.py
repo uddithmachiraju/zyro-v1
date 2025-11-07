@@ -17,6 +17,10 @@ class InvalidRoute(ZyroError):
 	"""Raised whe user passes a invalid route."""
 	pass 
 
+class ServerError(ZyroError):
+	"""Raised when fastapi server got into an exception."""
+	pass 
+
 class ConfigValidationError(ZyroError):
 	"""Raised when the YAML file is not valid."""
 	def __init__(self, message: str, errors: Optional[List[str]] = None) -> None:

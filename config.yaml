@@ -4,6 +4,12 @@ server:
   hot_reload: true 
   log_level: "INFO" 
 
+schemas:
+  import_path: "some path"
+  models:
+    User: "app.schemas.users.User" 
+    UserNotFound: "app.schemas.users.NotFound"
+
 endpoints:
   - group: "user"
     version: "v1"
@@ -16,9 +22,11 @@ endpoints:
         handler: "handlers.user.get_users"
         response:
           200:
-            model: "pydantic-model"
+            model: None
+            description: "Successfull" 
           404:
-            model: "model" 
+            model: None 
+            description: "Failed" 
 
       - path: "/{user_id}"
         method: "GET"
@@ -26,6 +34,6 @@ endpoints:
         handler: "some handler"
         response:
           200:
-            model: "model"
+            model: User
           404:
-            model: "model" 
+            model: UserNotFound

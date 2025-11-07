@@ -1,20 +1,49 @@
 from __future__ import annotations
 from dataclasses import field
+import decimal
 from io import FileIO
+from pathlib import Path 
 from pydantic import BaseModel, Field, field_validator, model_validator
-from typing import Dict, Literal, List, Optional
+from typing import Dict, Literal, List, Optional, Union
 from pydantic_core.core_schema import DatetimeSchema
 from src.zyro.core.exceptions import InvalidStatusCode, InvalidRoute
 
 HTTPMethods = Literal["GET", "POST", "PUT", "DELETE", "PATCH"] 
 LogLevel = Literal["INFO", "ERROR", "DEBUG", "CRITICAL", "WARNING"] 
 
+
+class ProjectConfig(BaseModel):
+	"""Project configuration."""
+
+	name: str = Field("project-zyro", description="Name of your project.")
+	version: str = Field("0.0.1", description="Version of your project.") 
+	description: str = Field("Make API's faster with zyro", description="Description about your project.") 
+	environment: str = Field("dev", description="Environment of the project") 
+
+
+class ServerConfig(BaseModel):
+    """Server deployment configuration."""
+
+    host: str = Field("0.0.0.0", description="Host/interface to bind (e.g. 0.0.0.0 or 127.0.0.1).")
+    port: int = Field(8000, ge=1, le=65535, description="Port number to bind the application.")
+    hot_reload: bool = Field(True, description="Enable automatic reload on source changes (for development).")
+    log_level: LogLevel = Field("INFO", description="Logging level for the application.")
+
+
+class SchemasConfig(BaseModel):
+	"""Configuration for the schemas."""
+
+	import_path: Path = Field(..., description="Path to the schemas.")
+	models: Dict[str, str] = Field(..., description="Mapping of model name -> import path string") 
+
+
 class RouteResponse(BaseModel):
 	"""Response Schema for the Routes."""
 
-	response_model: Optional[str] = Field(
+	response_model: Optional[Union[str, SchemasConfig]] = Field(
 		None, description="Optional reference to a response model/schema."
 	)
+
 
 class RouteConfig(BaseModel):
 	"""Configuration for single route.""" 
@@ -70,18 +99,12 @@ class EndpointConfig(BaseModel):
 
 		return v
 
-class ServerConfig(BaseModel):
-    """Server deployment configuration."""
-
-    host: str = Field("0.0.0.0", description="Host/interface to bind (e.g. 0.0.0.0 or 127.0.0.1).")
-    port: int = Field(8000, ge=1, le=65535, description="Port number to bind the application.")
-    hot_reload: bool = Field(True, description="Enable automatic reload on source changes (for development).")
-    log_level: LogLevel = Field("INFO", description="Logging level for the application.")
-
 class ZyroConfig(BaseModel):
     """Top-level configuration root for Zyro projects."""
 
+    project: ProjectConfig = Field(default_factory=ProjectConfig, description="Project settings.") 
     server: ServerConfig = Field(default_factory=ServerConfig, description="Server and deployment settings.")
+    schemas: Optional[SchemasConfig] = Field(None, description="Configuration for the server ")
     endpoints: List[EndpointConfig] = Field(default_factory=list, description="List of endpoint collections.")
 
     @model_validator(mode="after")

@@ -15,6 +15,8 @@ pydantic = "^2.12.3"
 pydantic-settings = "^2.11.0"
 typer = "^0.20.0"
 PyYAML = "^6.0.3" 
+fastapi = "^0.121.0" 
+uvicorn = "^0.38.0" 
 
 dotenv = "^0.9.9"
 pytest = "^8.4.2"

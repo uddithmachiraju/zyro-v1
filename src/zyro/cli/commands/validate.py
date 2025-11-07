@@ -7,7 +7,7 @@ from src.zyro.core.config.validator import valid_config
 from src.zyro.utils.validation import ensure_yaml_exists
 from src.zyro.core.exceptions import ConfigLoadError, ConfigValidationError
 
-def validate(config: Path, strict: bool = True, output: str | None = None) -> None:
+def validate(config: Path, strict: bool = True, output: str | None = None, verbose: bool = True) -> None:
 	"""Validates the config file."""
 
 	try:
@@ -27,7 +27,8 @@ def validate(config: Path, strict: bool = True, output: str | None = None) -> No
 				)
 			) 
 		else:
-			typer.secho("Config is valid", fg=typer.colors.GREEN, bold=True) 
+			if verbose:
+				typer.secho("Config is valid", fg=typer.colors.GREEN, bold=True) 
 			if result.warnings:
 				typer.secho("warnings:", fg=typer.colors.YELLOW, bold=True) 
 				for w in result.warnings:

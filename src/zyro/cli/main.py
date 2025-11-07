@@ -2,6 +2,7 @@ from __future__ import annotations
 from pathlib import Path
 import typer 
 from src.zyro.cli.commands.validate import validate as validate_func
+from src.zyro.cli.commands.start import start as start_func 
 
 zyro = typer.Typer(
 	name="zyro",
@@ -30,10 +31,17 @@ def validate(
 	"""Validates the config file."""
 	validate_func(config=config, strict=strict, output=output) 
 
-@zyro.command("dummy")
-def dummy() -> None:
-	"""A Dummy command to show the output in better format."""
-	typer.echo("Dummy command executed!") 
+@zyro.command("start")
+def start(
+		config: Path = typer.Option(
+			..., 
+			"--config", "-c", 
+			exists=True, dir_okay=False, readable=True, 
+			help="Path to config file" 
+		)
+	) -> None:
+	"""Spins up a fastapi server."""
+	start_func(config=config) 
 
 def main():
 	zyro() 
