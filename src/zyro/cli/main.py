@@ -38,10 +38,15 @@ def start(
 			"--config", "-c", 
 			exists=True, dir_okay=False, readable=True, 
 			help="Path to config file" 
-		)
+		), 
+		detach: bool = typer.Option(
+				False, 
+				"--detach", "-d", 
+				help="Run server in background (detached mode)" 
+			)
 	) -> None:
 	"""Spins up a fastapi server."""
-	start_func(config=config) 
+	start_func(config=config, detach=detach)  
 
 def main():
 	zyro() 

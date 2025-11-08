@@ -82,6 +82,7 @@ class RouteConfig(BaseModel):
 				raise InvalidStatusCode(f"Invalid HTTP status code in response mapping: {code}")
 		return self 
 
+
 class EndpointConfig(BaseModel):
 	"""A group of related routes (an endpoint collection)."""
 
@@ -98,6 +99,7 @@ class EndpointConfig(BaseModel):
 		if v != "/" and v.endswith("/"): v = v.rstrip("/")
 
 		return v
+		
 
 class ZyroConfig(BaseModel):
     """Top-level configuration root for Zyro projects."""
