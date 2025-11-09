@@ -6,11 +6,13 @@ from src.zyro.utils.parser import (
     get_server_config, get_project_config, 
     load_file, get_endpoints_config
 )
+from src.zyro.core.logging import setup_logging
 from src.zyro.core.api.router import mount_routes
 from src.zyro.core.api.fastapi_engine import create_app
 
 def run_server(config_path: str):
     """Run server - called by detached process."""
+    setup_logging()
     
     configuration = load_file(file_path=Path(config_path))
     project_config = get_project_config(config=configuration)
@@ -25,6 +27,7 @@ def run_server(config_path: str):
         host=server_config.host,
         port=server_config.port,
         log_level=server_config.log_level.lower(),
+        log_config=None 
     )
 
 if __name__ == "__main__":
