@@ -6,9 +6,13 @@ import typer
 import uvicorn
 
 from src.zyro.core.exceptions import ServerError
-from src.zyro.utils.parser import get_server_config, get_project_config, load_file
+from src.zyro.utils.parser import (
+	get_server_config, get_project_config, 
+	load_file, get_endpoints_config
+)
 from src.zyro.core.api.fastapi_engine import create_app
 from src.zyro.cli.commands.validate import validate as validate_func
+from src.zyro.core.api.router import mount_routes
 
 def start(config: Path, detach: bool = False) -> None:
     """Spins up the FastAPI server."""
@@ -25,6 +29,7 @@ def start(config: Path, detach: bool = False) -> None:
         configuration = load_file(file_path=config)
         project_config = get_project_config(config=configuration) 
         server_config = get_server_config(config=configuration)
+        endpoints_config = get_endpoints_config(config=configuration) 
 
         if detach:
             cmd = [
@@ -44,7 +49,7 @@ def start(config: Path, detach: bool = False) -> None:
             )
             
             typer.secho(
-                f"✓ Server started in background with PID {process.pid}", 
+                f"Server started in background with PID {process.pid}", 
                 fg=typer.colors.GREEN,
                 bold=True
             )
@@ -52,6 +57,7 @@ def start(config: Path, detach: bool = False) -> None:
             
         else:
             app = create_app(project_config=project_config)
+            mount_routes(app=app, endpoints_config=endpoints_config)
             uvicorn.run(
                 app=app, 
                 host=server_config.host,

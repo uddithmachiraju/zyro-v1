@@ -88,7 +88,7 @@ class EndpointConfig(BaseModel):
 
 	group: Optional[str] = Field(None, description="Optional logical group name for this endpoint collection.")
 	version: Optional[str] = Field("v1", description="Semantic version or API version string for these endpoints, e.g. 'v1'.")
-	base_path: Optional[str] = Field("/", description="Base path prefix for the endpoint collection. Must start with '/'.")
+	base_path: str = Field("/", description="Base path prefix for the endpoint collection. Must start with '/'.")
 	routes: List[RouteConfig] = Field(default_factory=list, description="List of route definitions under this endpoint.") 
 
 	@field_validator("base_path", mode="before")
