@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Any, Dict, List
 import yaml
 
-from src.zyro.core.config.schema import EndpointConfig, ZyroConfig, ProjectConfig, ServerConfig
+from zyro.core.config.schema import EndpointConfig, ZyroConfig, ProjectConfig, ServerConfig
 
 def load_file(file_path: Path) -> ZyroConfig:
 	"""Load the config file into ZyroConfig"""

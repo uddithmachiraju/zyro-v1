@@ -5,7 +5,7 @@ from inspect import EndOfBlock
 from pathlib import Path 
 from typing import Any, Dict 
 
-from src.zyro.core.exceptions import ConfigLoadError
+from zyro.core.exceptions import ConfigLoadError
 
 
 def load_config(file_path: Path) -> Dict[str, Any]:

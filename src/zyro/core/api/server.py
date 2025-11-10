@@ -2,13 +2,13 @@
 import sys
 from pathlib import Path
 import uvicorn
-from src.zyro.utils.parser import (
+from zyro.utils.parser import (
     get_server_config, get_project_config, 
     load_file, get_endpoints_config
 )
-from src.zyro.core.logging import setup_logging
-from src.zyro.core.api.router import mount_routes
-from src.zyro.core.api.fastapi_engine import create_app
+from zyro.core.logging import setup_logging
+from zyro.core.api.router import mount_routes
+from zyro.core.api.fastapi_engine import create_app
 
 def run_server(config_path: str):
     """Run server - called by detached process."""

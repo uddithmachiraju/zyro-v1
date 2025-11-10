@@ -4,7 +4,7 @@ import logging.config
 from datetime import datetime
 from logging.handlers import RotatingFileHandler
 from typing import Dict, Any, cast 
-from src.zyro.core.setting import ensure_directories, get_settings
+from zyro.core.setting import ensure_directories, get_settings
 
 
 def setup_logging() -> RotatingFileHandler:

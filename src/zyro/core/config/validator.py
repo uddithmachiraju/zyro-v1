@@ -2,8 +2,8 @@ from __future__ import annotations
 from dataclasses import dataclass 
 from typing import Any, Dict, List, Tuple
 from pydantic import BaseModel, ValidationError
-from src.zyro.core.config.schema import ZyroConfig
-from src.zyro.core.exceptions import ConfigValidationError
+from zyro.core.config.schema import ZyroConfig
+from zyro.core.exceptions import ConfigValidationError
 
 @dataclass
 class ValidatorResult:

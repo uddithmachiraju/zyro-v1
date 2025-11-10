@@ -1,7 +1,7 @@
 from __future__ import annotations
 from pathlib import Path 
 
-from src.zyro.core.exceptions import ConfigLoadError
+from zyro.core.exceptions import ConfigLoadError
 
 def ensure_yaml_exists(file: Path) -> None:
 	if not file.exists():

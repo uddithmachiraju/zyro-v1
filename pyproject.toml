@@ -3,22 +3,28 @@ name = "zyro"
 version = "0.0.1"
 description = "An automation tool that makes APIs and deployment faster."
 authors = ["M. Sanjay Uddith Raju <uddithmachiraju@gmail.com>"]
+# packages = [
+#   { include = "zyro", from = "src" }
+# ]
 
 [tool.poetry.scripts]
-zyro = "src.zyro.cli.main:main" 
+zyro = "zyro.cli.main:main"
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.12"
 
-[tool.poetry.group.dev.dependencies]
+# runtime dependencies your CLI actually uses
+typer = "^0.20.0"
+PyYAML = "^6.0.3"
+fastapi = "^0.121.0"
+uvicorn = "^0.38.0"
 pydantic = "^2.12.3"
 pydantic-settings = "^2.11.0"
-typer = "^0.20.0"
-PyYAML = "^6.0.3" 
-fastapi = "^0.121.0" 
-uvicorn = "^0.38.0" 
-
 dotenv = "^0.9.9"
+
+[tool.poetry.group.dev.dependencies]
+# development & build tools (not required at runtime)
+build = "^1.3.0"
 pytest = "^8.4.2"
 black = "^25.9.0"
 flake8 = "^7.3.0"
@@ -28,6 +34,9 @@ mypy = "^1.18.2"
 [build-system]
 requires = ["poetry-core>=2.2.1"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.setuptools.packages.find]
+exclude = ["venv*", "tests*", "docs*"]
 
 [tool.black]
 line-length = 88

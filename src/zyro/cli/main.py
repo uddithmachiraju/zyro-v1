@@ -1,8 +1,8 @@
 from __future__ import annotations
 from pathlib import Path
 import typer 
-from src.zyro.cli.commands.validate import validate as validate_func
-from src.zyro.cli.commands.start import start as start_func 
+from zyro.cli.commands.validate import validate as validate_func
+from zyro.cli.commands.start import start as start_func 
 
 zyro = typer.Typer(
 	name="zyro",

@@ -6,7 +6,7 @@ from pathlib import Path
 from pydantic import BaseModel, Field, field_validator, model_validator
 from typing import Dict, Literal, List, Optional, Union
 from pydantic_core.core_schema import DatetimeSchema
-from src.zyro.core.exceptions import InvalidStatusCode, InvalidRoute
+from zyro.core.exceptions import InvalidStatusCode, InvalidRoute
 
 HTTPMethods = Literal["GET", "POST", "PUT", "DELETE", "PATCH"] 
 LogLevel = Literal["INFO", "ERROR", "DEBUG", "CRITICAL", "WARNING"] 

@@ -2,7 +2,7 @@ import re
 from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi import FastAPI
 from typing import Callable, List, Dict, Any 
-from src.zyro.core.config.schema import EndpointConfig, RouteConfig
+from zyro.core.config.schema import EndpointConfig, RouteConfig
 
 def zyro_info_page() -> HTMLResponse:
 	return HTMLResponse(

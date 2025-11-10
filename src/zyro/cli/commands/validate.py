@@ -2,10 +2,10 @@ from __future__ import annotations
 from pathlib import Path
 import typer 
 import json 
-from src.zyro.core.config.loader import load_config
-from src.zyro.core.config.validator import valid_config
-from src.zyro.utils.validation import ensure_yaml_exists
-from src.zyro.core.exceptions import ConfigLoadError, ConfigValidationError
+from zyro.core.config.loader import load_config
+from zyro.core.config.validator import valid_config
+from zyro.utils.validation import ensure_yaml_exists
+from zyro.core.exceptions import ConfigLoadError, ConfigValidationError
 
 def validate(config: Path, strict: bool = True, output: str | None = None, verbose: bool = True) -> None:
 	"""Validates the config file."""

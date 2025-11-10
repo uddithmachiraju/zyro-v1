@@ -5,15 +5,15 @@ import sys
 import typer
 import uvicorn
 
-from src.zyro.core.exceptions import ServerError
-from src.zyro.utils.parser import (
+from zyro.core.exceptions import ServerError
+from zyro.utils.parser import (
 	get_server_config, get_project_config, 
 	load_file, get_endpoints_config
 )
-from src.zyro.core.logging import setup_logging
-from src.zyro.core.api.fastapi_engine import create_app
-from src.zyro.cli.commands.validate import validate as validate_func
-from src.zyro.core.api.router import mount_routes
+from zyro.core.logging import setup_logging
+from zyro.core.api.fastapi_engine import create_app
+from zyro.cli.commands.validate import validate as validate_func
+from zyro.core.api.router import mount_routes
 
 def start(config: Path, detach: bool = False) -> None:
     """Spins up the FastAPI server."""
